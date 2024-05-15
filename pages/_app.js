@@ -1,5 +1,12 @@
-import "@/styles/globals.css";
+import '../styles/globals.css';
+import { NamesProvider } from '@/context/NamesContext';
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function App({ Component, pageProps }) {
+  return (
+    <NamesProvider>
+      <Component {...pageProps} />
+    </NamesProvider>
+  );
 }
+
+export default App;
