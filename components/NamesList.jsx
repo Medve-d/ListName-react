@@ -1,19 +1,21 @@
 import { useContext } from 'react';
-import NamesContext from '@/context/NamesContext';
+import NamesContext from '../context/NamesContext';
 
-const NamesList = () => {
-  const { names } = useContext(NamesContext);
+const NameList = () => {
+  const { names, removeName } = useContext(NamesContext);
 
   return (
-    <div>
-      <h2>List of Names</h2>
-      <ul>
-        {names.map((name, index) => (
-          <li key={index}>{name}</li>
-        ))}
-      </ul>
+    <div className='bouton-supprimer'>
+    <ul>
+      {names.map((name, index) => (
+        <li key={index}>
+          {name}
+          <button onClick={() => removeName(name)}>Supprimer</button>
+        </li>
+      ))}
+    </ul>
     </div>
   );
 };
 
-export default NamesList;
+export default NameList;

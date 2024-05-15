@@ -8,11 +8,17 @@ export const NamesProvider = ({ children }) => {
   const [names, setNames] = useState([]);
 
   const addName = (name) => {
-    setNames([...names, name]);
+    if (!names.includes(name)) {
+      setNames([...names, name]);
+    }
+  };
+
+  const removeName = (nameToRemove) => {
+    setNames(names.filter((name) => name !== nameToRemove));
   };
 
   return (
-    <NamesContext.Provider value={{ names, addName }}>
+    <NamesContext.Provider value={{ names, addName, removeName }}>
       {children}
     </NamesContext.Provider>
   );
